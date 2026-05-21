@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="مطعم دار اليمن - الطعم اليمني الأصيل | المندي والحرازي والزربيان | فيصل، الجيزة، مصر">
+  <meta name="keywords" content="مطعم يمني, مندي, حرازي, زربيان, فيصل, الجيزة, دار اليمن">
+  <meta property="og:title" content="مطعم دار اليمن | الدار دارك">
+  <meta property="og:description" content="أشهى الأكلات اليمنية والخليجية في قلب فيصل">
+  <meta property="og:image" content="photos/llogo.jpg">
+  <title>مطعم دار اليمن | الدار دارك</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <img src="photos/llogo.jpg" alt="دار اليمن" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <img src="photos/llogo.jpg" alt="مطعم دار اليمن">
+        <span class="nav-brand-name" data-i18n="brand.name">مطعم دار اليمن</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" data-i18n="nav.about">عن المطعم</a></li>
+        <li><a href="#menu" data-i18n="nav.menu">قائمة الطعام</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery">المعرض</a></li>
+        <li><a href="#reviews" data-i18n="nav.reviews">التقييمات</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">تواصل معنا</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-icon-ar">EN</span>
+          <span class="lang-icon-en">عر</span>
+        </button>
+
+        <button class="cart-btn" id="cart-btn" aria-label="Cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div id="mobile-nav-overlay"></div>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline id="hero-video" poster="photos/صورة حلوه جدا كواجهه.webp">
+        <source src="photos/ت.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-gradient-bottom"></div>
+
+    <div class="hero-content">
+      <div class="hero-logo-wrap reveal">
+        <img src="photos/llogo.jpg" alt="دار اليمن" class="hero-logo">
+      </div>
+      <p class="hero-brand-name reveal" data-i18n="brand.name">مطعم دار اليمن</p>
+      <p class="hero-eyebrow reveal" data-i18n="hero.eyebrow">أشهى الأكلات اليمنية والخليجية</p>
+      <h1 class="hero-title reveal">
+        <span class="hero-title-line" data-i18n="hero.line1">الدار دارك</span>
+      </h1>
+      <p class="hero-subtitle reveal" data-i18n="hero.subtitle">المندي الأصيل · الزربيان الشهي · الحرازي الفريد</p>
+
+      <div class="hero-btns reveal">
+        <a href="#menu" class="btn-primary" data-i18n="hero.order">اطلب الآن</a>
+      </div>
+
+      <div class="hero-years-badge reveal">
+        <span class="hero-years-num">10+</span>
+        <span class="hero-years-lbl" data-i18n="hero.years">سنوات خبرة</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-media reveal">
+          <div class="about-img-main">
+            <img src="photos/صورة المطعم.webp" alt="مطعم دار اليمن من الداخل" loading="lazy">
+          </div>
+          <div class="about-img-float">
+            <img src="photos/صورة المطعم 2.webp" alt="أجواء المطعم" loading="lazy">
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+          <span class="eyebrow" data-i18n="about.eyebrow">قصتنا</span>
+          <h2 class="section-title" data-i18n="about.title">طعم له تاريخ<br>وأصالة لا تُنسى</h2>
+          <p class="about-p" data-i18n="about.p1">في دار اليمن، بنقدّملك أحلى أكل يمني بكل تفاصيله — بأجود المكونات وبإيدين متمرسة بتعشق الأكل الحقيقي.</p>
+
+          <div class="about-features">
+            <div class="feat-item">
+              <span class="feat-icon-svg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              <div>
+                <h4 data-i18n="about.f1t">مكونات طازجة يومياً</h4>
+                <p data-i18n="about.f1d">بنختار المكونات بعناية كل يوم</p>
+              </div>
+            </div>
+            <div class="feat-item">
+              <span class="feat-icon-svg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <div>
+                <h4 data-i18n="about.f2t">طهاة يمنيين من الأصل</h4>
+                <p data-i18n="about.f2d">ناس فاهمة الأكل اليمني من جوه لبره</p>
+              </div>
+            </div>
+            <div class="feat-item">
+              <span class="feat-icon-svg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </span>
+              <div>
+                <h4 data-i18n="about.f3t">أجواء عائلية دافئة</h4>
+                <p data-i18n="about.f3d">المكان ده بيحس فيه كل الناس إنه بيته</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Delivery Promo Banner -->
+  <div id="delivery-promo">
+    <div class="container">
+      <div class="promo-inner">
+        <span class="promo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="20" height="20"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </span>
+        <p class="promo-text">
+          <strong>علشان حبايبنا في شارع العشرين</strong> — التوصيل لأي مكان داخل الشارع من أوله لآخره
+          <span class="promo-price">25 جنيه بس</span>
+        </p>
+        <a href="#menu" class="promo-cta" id="promo-cta-btn">اطلب دلوقتي</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Section -->
+  <section id="menu" class="section section-dark">
+    <div class="container">
+      <span class="eyebrow eyebrow-light" data-i18n="menu.eyebrow">قائمة الطعام</span>
+      <h2 class="section-title section-title-light" data-i18n="menu.title">اختر طبقك المفضل</h2>
+    </div>
+
+    <div id="tabs-wrapper">
+      <div id="category-tabs" class="container">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="menu-sections">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <span class="eyebrow" data-i18n="gallery.eyebrow">معرض الصور</span>
+      <h2 class="section-title" data-i18n="gallery.title">من مطبخنا إلى طاولتك</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item g-large reveal">
+          <img src="photos/صورة حلوه جدا كواجهه.webp" alt="أطباق دار اليمن" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="photos/صورة اكل رائعه.webp" alt="أطباق رائعة" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="photos/صورة اطباق رائعه.webp" alt="أطباق شهية" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="photos/صورة وجبة ضخمة.webp" alt="وجبة ضخمة" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="photos/صورة للمطع 4.webp" alt="المطعم" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="photos/صورة للمطعم 6.webp" alt="أجواء المطعم" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="photos/صور اكل/صورة ممتازة.jpg" alt="أطباق دار اليمن" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="photos/صور اكل/صورة ممتازة تحط ضمن الصور.jpg" alt="أطباق شهية" loading="lazy">
+          <div class="gallery-hover"><span data-i18n="gallery.view">مشاهدة</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <button id="lightbox-close" aria-label="إغلاق">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="section section-dark">
+    <div class="container">
+      <span class="eyebrow eyebrow-light" data-i18n="reviews.eyebrow">آراء عملائنا</span>
+      <h2 class="section-title section-title-light" data-i18n="reviews.title">ماذا يقول ضيوفنا</h2>
+
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-body" data-i18n="reviews.r1">"أروع مندي أكلته في القاهرة! اللحم طري جداً والأرز بالمرق لا يوصف. الخدمة ممتازة وأسعار معقولة جداً. سأعود بالتأكيد!"</p>
+          <div class="review-footer">
+            <div class="review-avatar">م</div>
+            <div>
+              <div class="review-name" data-i18n="reviews.r1n">محمد أحمد</div>
+              <div class="review-date" data-i18n="reviews.r1d">منذ أسبوع</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-body" data-i18n="reviews.r2">"تجربة رائعة! الزربيان له طعم مختلف تماماً. الأجواء عائلية وهادئة ومريحة. أفضل مطعم يمني في الجيزة بلا منازع."</p>
+          <div class="review-footer">
+            <div class="review-avatar">ف</div>
+            <div>
+              <div class="review-name" data-i18n="reviews.r2n">فاطمة علي</div>
+              <div class="review-date" data-i18n="reviews.r2d">منذ أسبوعين</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-body" data-i18n="reviews.r3">"الحرازي ممتاز والأسعار مناسبة. من أفضل المطاعم اليمنية في المنطقة. خدمة سريعة وموظفين لطيفين. شكراً دار اليمن!"</p>
+          <div class="review-footer">
+            <div class="review-avatar">أ</div>
+            <div>
+              <div class="review-name" data-i18n="reviews.r3n">أحمد سمير</div>
+              <div class="review-date" data-i18n="reviews.r3d">منذ شهر</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <span class="eyebrow" data-i18n="contact.eyebrow">تواصل معنا</span>
+      <h2 class="section-title" data-i18n="contact.title">نحن في خدمتكم دائماً</h2>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-card">
+            <span class="contact-icon">📍</span>
+            <div>
+              <h4 data-i18n="contact.addr.t">العنوان</h4>
+              <p data-i18n="contact.addr.v">2 ش الشرفاء، فيصل الرئيسي، أمام التوحيد والنور وشارع ناصر الثورة، الجيزة</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">📞</span>
+            <div>
+              <h4 data-i18n="contact.phone.t">الهاتف</h4>
+              <p><a href="tel:+201117518890" dir="ltr">+20 11 17518890</a></p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">🕐</span>
+            <div>
+              <h4 data-i18n="contact.hours.t">أوقات العمل</h4>
+              <p data-i18n="contact.hours.v">يومياً من 12 ظهراً حتى 2 صباحاً</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">🚗</span>
+            <div>
+              <h4 data-i18n="contact.delivery.t">خدماتنا</h4>
+              <p data-i18n="contact.delivery.v">داخل المطعم · استلام · توصيل</p>
+            </div>
+          </div>
+
+          <div class="soc-row">
+            <a href="https://www.facebook.com/DarAlYemen.EG" target="_blank" rel="noopener" class="soc-pill soc-fb" aria-label="Facebook">
+              <div class="soc-pill-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </div>
+              <span class="soc-pill-name">Facebook</span>
+              <span class="soc-pill-handle">DarAlYemen.EG</span>
+            </a>
+
+            <a href="https://www.instagram.com/daralyemen.eg" target="_blank" rel="noopener" class="soc-pill soc-ig" aria-label="Instagram">
+              <div class="soc-pill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <span class="soc-pill-name">Instagram</span>
+              <span class="soc-pill-handle">daralyemen.eg</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@daralyemen.eg" target="_blank" rel="noopener" class="soc-pill soc-tiktok" aria-label="TikTok">
+              <div class="soc-pill-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.45a8.16 8.16 0 004.77 1.52V6.5a4.85 4.85 0 01-1-.19z"/></svg>
+              </div>
+              <span class="soc-pill-name">TikTok</span>
+              <span class="soc-pill-handle">daralyemen.eg</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-map reveal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.6!2d31.2098!3d29.9879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584eded0903db5%3A0xa7f15c3ce13dc69b!2z2K_Yp9ix%20Yement%20Restaurant!5e0!3m2!1sar!2seg!4v1234567890123"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="موقع مطعم دار اليمن">
+          </iframe>
+          <a href="https://maps.app.goo.gl/UwjCu4tSdzddJKWc6" target="_blank" class="map-cta" data-i18n="contact.directions">افتح في خرائط Google</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="photos/llogo.jpg" alt="دار اليمن" class="footer-logo">
+          <p class="footer-slogan" data-i18n="footer.slogan">الدار دارك | أشهى الأكلات اليمنية والخليجية</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/DarAlYemen.EG" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/daralyemen.eg" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@daralyemen.eg" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.45a8.16 8.16 0 004.77 1.52V6.5a4.85 4.85 0 01-1-.19z"/></svg>
+            </a>
+            <a href="https://wa.me/201117518890" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.quick">روابط سريعة</h4>
+          <ul>
+            <li><a href="#about" data-i18n="nav.about">عن المطعم</a></li>
+            <li><a href="#menu" data-i18n="nav.menu">قائمة الطعام</a></li>
+            <li><a href="#gallery" data-i18n="nav.gallery">المعرض</a></li>
+            <li><a href="#reviews" data-i18n="nav.reviews">التقييمات</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">تواصل معنا</a></li>
+            <li><a href="team.html">⭐ موظف الشهر</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.contact">معلومات التواصل</h4>
+          <ul class="footer-contact-list">
+            <li>📍 <span data-i18n="footer.addr">2 ش الشرفاء، فيصل، الجيزة</span></li>
+            <li>📞 <a href="tel:+201117518890" dir="ltr">+20 11 17518890</a></li>
+            <li>🕐 <span data-i18n="footer.hours">12 ظ - 2 ص يومياً</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer.copy">© 2025 مطعم دار اليمن. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" role="alert" aria-live="polite">
+    <span class="toast-check">✓</span>
+    <span data-i18n="cart.added">أُضيف إلى السلة</span>
+  </div>
+
+  <!-- Cart Drawer Overlay -->
+  <div id="cart-overlay" class="drawer-overlay"></div>
+
+  <!-- Cart Drawer -->
+  <aside id="cart-drawer" class="drawer" role="dialog" aria-modal="true" aria-label="سلة التسوق">
+    <div class="drawer-head">
+      <button class="drawer-close-btn" id="cart-close" aria-label="إغلاق السلة" title="إغلاق">✕</button>
+      <h3 data-i18n="cart.title">سلتك</h3>
+      <div style="width:42px"></div>
+    </div>
+    <div class="drawer-body" id="cart-body">
+      <div id="cart-empty-state" class="empty-state">
+        <div class="empty-icon">🛒</div>
+        <p data-i18n="cart.empty">سلتك فارغة حتى الآن</p>
+        <button class="btn-primary btn-sm" id="cart-browse-btn" data-i18n="cart.browse">تصفح القائمة</button>
+      </div>
+      <div id="cart-items-list"></div>
+      <div id="upsell-zone" style="display:none">
+        <p class="upsell-title" data-i18n="cart.upsell">إضافات سريعة</p>
+        <div id="upsell-chips"></div>
+      </div>
+    </div>
+    <div class="drawer-foot" id="cart-foot" style="display:none">
+      <div class="cart-total-row">
+        <span data-i18n="cart.total">الإجمالي</span>
+        <strong id="cart-total-val">0 <span data-i18n="cart.currency">جنيه</span></strong>
+      </div>
+      <button class="btn-primary btn-full" id="checkout-btn" data-i18n="cart.checkout">إتمام الطلب</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Drawer Overlay -->
+  <div id="checkout-overlay" class="drawer-overlay"></div>
+
+  <!-- Checkout Drawer -->
+  <aside id="checkout-drawer" class="drawer drawer-checkout" role="dialog" aria-modal="true" aria-label="إتمام الطلب">
+    <div class="drawer-head">
+      <button class="drawer-close-btn" id="checkout-close" aria-label="إغلاق نافذة الطلب" title="إغلاق">✕</button>
+      <h3 data-i18n="checkout.title">إتمام الطلب</h3>
+      <button class="drawer-back-btn" id="checkout-back" aria-label="رجوع للسلة" title="رجوع للسلة">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <div id="checkout-summary-box" class="checkout-summary-box"></div>
+      <form id="order-form" novalidate autocomplete="on">
+        <div class="form-field">
+          <label for="f-name">
+            <span data-i18n="checkout.name">الاسم الكريم</span>
+            <span class="req-star" aria-hidden="true">*</span>
+          </label>
+          <input type="text" id="f-name" name="name" required autocomplete="name" placeholder=" ">
+          <span class="field-err" data-i18n="checkout.name.err">الرجاء إدخال الاسم</span>
+        </div>
+        <div class="form-field">
+          <label for="f-phone">
+            <span data-i18n="checkout.phone">رقم الهاتف</span>
+            <span class="req-star" aria-hidden="true">*</span>
+          </label>
+          <input type="tel" id="f-phone" name="phone" required autocomplete="tel" dir="ltr" placeholder=" ">
+          <span class="field-err" data-i18n="checkout.phone.err">الرجاء إدخال رقم الهاتف</span>
+        </div>
+        <!-- Delivery type -->
+        <div class="form-field">
+          <label>
+            <span data-i18n="checkout.type">طريقة الاستلام</span>
+            <span class="req-star" aria-hidden="true">*</span>
+          </label>
+          <div class="delivery-toggle">
+            <label class="dtoggle-opt">
+              <input type="radio" name="delivery_type" value="delivery" checked>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span data-i18n="checkout.type.delivery">توصيل</span>
+            </label>
+            <label class="dtoggle-opt">
+              <input type="radio" name="delivery_type" value="pickup">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span data-i18n="checkout.type.pickup">استلام في المطعم</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-field" id="address-field-group">
+          <label for="f-address">
+            <span data-i18n="checkout.address">عنوان التوصيل</span>
+            <span class="req-star" aria-hidden="true">*</span>
+          </label>
+          <textarea id="f-address" name="address" rows="3" required autocomplete="street-address" placeholder=" "></textarea>
+          <span class="field-err" data-i18n="checkout.address.err">الرجاء إدخال العنوان</span>
+        </div>
+        <div class="form-field">
+          <label for="f-notes">
+            <span data-i18n="checkout.notes">ملاحظات</span>
+            <span class="opt-label" data-i18n="checkout.optional">(اختياري)</span>
+          </label>
+          <textarea id="f-notes" name="notes" rows="2" placeholder=" "></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="drawer-foot">
+      <button class="btn-primary btn-full" id="submit-order-btn" data-i18n="checkout.submit">أرسل الطلب</button>
+    </div>
+  </aside>
+
+  <!-- Success Overlay -->
+  <div id="success-overlay">
+    <div class="success-card" id="success-card">
+      <div class="success-emoji">✅</div>
+      <h2 data-i18n="success.title">تم إرسال طلبك!</h2>
+      <p class="success-sub" data-i18n="success.orderlbl">رقم طلبك</p>
+      <div class="success-num" id="success-num">#0000</div>
+      <p class="success-msg" data-i18n="success.msg">سيتم التواصل معك قريباً لتأكيد طلبك</p>
+      <button class="btn-primary" id="success-ok-btn" data-i18n="success.ok">حسناً، شكراً!</button>
+    </div>
+  </div>
+
+  <!-- Menu FAB -->
+  <button id="menu-fab" aria-label="قائمة الطعام" title="قائمة الطعام">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 01-8 0"/>
+    </svg>
+    <span class="menu-fab-badge" id="menu-fab-badge" style="display:none">0</span>
+  </button>
+
+  <!-- WhatsApp FAB -->
+  <a id="whatsapp-fab" href="https://wa.me/201117518890" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
