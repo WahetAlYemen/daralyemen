@@ -10,10 +10,10 @@ export async function onRequestPost(context) {
 
   try {
     const body = await request.json();
-    const { text } = body;
+    const { orderData } = body;
 
-    if (!text) {
-      return new Response(JSON.stringify({ ok: false, error: 'missing text' }), {
+    if (!orderData) {
+      return new Response(JSON.stringify({ ok: false, error: 'missing orderData' }), {
         status: 400, headers: corsHeaders
       });
     }
@@ -29,7 +29,7 @@ export async function onRequestPost(context) {
 
     const BASE = `https://api.telegram.org/bot${TG_TOKEN}`;
 
-    // Step 1: send placeholder to reserve order number
+    // Step 1: send placeholder to reserve sequential order number
     const placeholderRes = await fetch(`${BASE}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -43,16 +43,39 @@ export async function onRequestPost(context) {
       });
     }
 
-    const msgId = placeholderData.result.message_id;
+    const msgId    = placeholderData.result.message_id;
+    const orderNum = 9019 + msgId;
 
-    // Step 2: edit with real content
+    // Step 2: build the full message with the real order number
+    const { name, phone, address, isDelivery, items, total, currency, notes } = orderData;
+
+    const itemLines = items.map(i => `  • ${i.qty}× ${i.name} — ${i.total} ${currency}`).join('\n');
+    const orderTypeIcon = isDelivery ? '🛵 توصيل' : '🏪 استلام في المطعم';
+
+    const fullMsg = [
+      `📦 رقم الطلب: #${orderNum}`,
+      '',
+      orderTypeIcon,
+      `👤 الاسم: ${name}`,
+      `📞 الهاتف: ${phone}`,
+      isDelivery ? `📍 العنوان: ${address}` : `📍 الاستلام: في المطعم`,
+      '',
+      `🧾 الطلب:`,
+      itemLines,
+      '',
+      `💰 الإجمالي: ${total} ${currency}`,
+      isDelivery ? `💵 الدفع: كاش عند التوصيل` : `💵 الدفع: كاش عند الاستلام`,
+      notes ? `📝 ملاحظات: ${notes}` : ''
+    ].filter(Boolean).join('\n');
+
+    // Step 3: edit placeholder with real content
     await fetch(`${BASE}/editMessageText`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TG_CHAT_ID, message_id: msgId, text }),
+      body: JSON.stringify({ chat_id: TG_CHAT_ID, message_id: msgId, text: fullMsg }),
     });
 
-    return new Response(JSON.stringify({ ok: true, message_id: msgId }), {
+    return new Response(JSON.stringify({ ok: true, message_id: msgId, orderNum }), {
       status: 200, headers: corsHeaders
     });
 

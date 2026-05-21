@@ -693,43 +693,29 @@ async function submitOrder() {
   try {
     let orderNum = Math.floor(Math.random() * 1000) + 9020; // fallback
 
-    // Build message text
-    const items = Object.values(cart);
-    const itemLines = items.map(({ item, qty }) =>
-      `  • ${qty}× ${item.nameAr} — ${item.price * qty} ${currency}`
-    ).join('\n');
-    const totalVal = cartTotal();
-    const orderTypeIcon = isDelivery ? '🛵 توصيل' : '🏪 استلام في المطعم';
+    const cartItems = Object.values(cart).map(({ item, qty }) => ({
+      name:  item.nameAr,
+      qty,
+      total: item.price * qty
+    }));
 
-    // placeholder text — will be replaced by server with real order number
-    const msgText = [
-      `🆔 رقم الطلب: يتم التحديد...`,
-      '',
-      orderTypeIcon,
-      `👤 الاسم: ${name}`,
-      `📞 الهاتف: ${phone}`,
-      isDelivery ? `📍 العنوان: ${address}` : `📍 الاستلام: في المطعم`,
-      '',
-      `🧾 الطلب:`,
-      itemLines,
-      '',
-      `💰 الإجمالي: ${totalVal} ${currency}`,
-      isDelivery ? `💵 الدفع: كاش عند التوصيل` : `💵 الدفع: كاش عند الاستلام`,
-      notes ? `📝 ملاحظات: ${notes}` : ''
-    ].filter(Boolean).join('\n');
-
-    // Call Cloudflare Pages Function (hides the bot token server-side)
+    // Send structured data — server builds message & computes order number
     const res = await fetch(ORDER_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: msgText })
+      body: JSON.stringify({
+        orderData: {
+          name, phone, address, isDelivery, notes,
+          items:    cartItems,
+          total:    cartTotal(),
+          currency
+        }
+      })
     });
 
     if (res.ok) {
       const data = await res.json();
-      if (data.ok && data.message_id) {
-        orderNum = ORDER_OFFSET + data.message_id;
-      }
+      if (data.ok && data.orderNum) orderNum = data.orderNum;
     }
 
     // Success
