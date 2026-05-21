@@ -5,10 +5,9 @@
 
 'use strict';
 
-/* ── TELEGRAM CONFIG ──────────────────────────────────────── */
-// Replace with your actual bot token and chat ID
-const TG_TOKEN   = 'YOUR_TELEGRAM_BOT_TOKEN';
-const TG_CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID';
+/* ── ORDER API ────────────────────────────────────────────── */
+// Calls Cloudflare Pages Function — token is secret on the server
+const ORDER_API    = '/api/order';
 const ORDER_OFFSET = 9019; // order numbers start at 9020
 
 /* ── TRANSLATIONS ─────────────────────────────────────────── */
@@ -694,53 +693,42 @@ async function submitOrder() {
   try {
     let orderNum = Math.floor(Math.random() * 1000) + 9020; // fallback
 
-    // Step 1: Send placeholder to get message_id (= order number)
-    const placeholderRes = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+    // Build message text
+    const items = Object.values(cart);
+    const itemLines = items.map(({ item, qty }) =>
+      `  • ${qty}× ${item.nameAr} — ${item.price * qty} ${currency}`
+    ).join('\n');
+    const totalVal = cartTotal();
+    const orderTypeIcon = isDelivery ? '🛵 توصيل' : '🏪 استلام في المطعم';
+
+    // placeholder text — will be replaced by server with real order number
+    const msgText = [
+      `🆔 رقم الطلب: يتم التحديد...`,
+      '',
+      orderTypeIcon,
+      `👤 الاسم: ${name}`,
+      `📞 الهاتف: ${phone}`,
+      isDelivery ? `📍 العنوان: ${address}` : `📍 الاستلام: في المطعم`,
+      '',
+      `🧾 الطلب:`,
+      itemLines,
+      '',
+      `💰 الإجمالي: ${totalVal} ${currency}`,
+      isDelivery ? `💵 الدفع: كاش عند التوصيل` : `💵 الدفع: كاش عند الاستلام`,
+      notes ? `📝 ملاحظات: ${notes}` : ''
+    ].filter(Boolean).join('\n');
+
+    // Call Cloudflare Pages Function (hides the bot token server-side)
+    const res = await fetch(ORDER_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TG_CHAT_ID, text: '⏳' })
+      body: JSON.stringify({ text: msgText })
     });
 
-    if (placeholderRes.ok) {
-      const placeholderData = await placeholderRes.json();
-      if (placeholderData.ok) {
-        const msgId = placeholderData.result.message_id;
-        orderNum = ORDER_OFFSET + msgId;
-
-        // Step 2: Build full message
-        const items = Object.values(cart);
-        const itemLines = items.map(({ item, qty }) =>
-          `  • ${qty}× ${item.nameAr} — ${item.price * qty} ${t('currency')}`
-        ).join('\n');
-
-        const totalVal = cartTotal();
-        const orderTypeIcon = isDelivery ? '🛵 توصيل' : '🏪 استلام في المطعم';
-        const fullMsg = [
-          `📦 رقم الطلب: #${orderNum}`,
-          '',
-          orderTypeIcon,
-          `👤 الاسم: ${name}`,
-          `📞 الهاتف: ${phone}`,
-          isDelivery ? `📍 العنوان: ${address}` : `📍 الاستلام: في المطعم`,
-          '',
-          `🧾 الطلب:`,
-          itemLines,
-          '',
-          `💰 الإجمالي: ${totalVal} ${currency}`,
-          isDelivery ? `💵 الدفع: كاش عند التوصيل` : `💵 الدفع: كاش عند الاستلام`,
-          notes ? `📝 ملاحظات: ${notes}` : ''
-        ].filter(Boolean).join('\n');
-
-        // Step 3: Edit the placeholder with real content
-        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/editMessageText`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: TG_CHAT_ID,
-            message_id: msgId,
-            text: fullMsg
-          })
-        });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.ok && data.message_id) {
+        orderNum = ORDER_OFFSET + data.message_id;
       }
     }
 
@@ -754,7 +742,6 @@ async function submitOrder() {
 
   } catch (err) {
     console.error('Order error:', err);
-    // Still show success to avoid confusing the customer
     closeCheckout();
     clearCart();
     form.reset();
